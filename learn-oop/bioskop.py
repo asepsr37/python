@@ -97,6 +97,7 @@ class Customer:
     list_pemesanan_film.append({"customer_pesan_film" : customer_pesan_film,
     "Jumlah_tiket" : quantity_tiket, "Kursi_dipesan" : self.customer_pesan_kursi()})
 
+    #
     for detail in list_pemesanan_film:
       print(f"{detail['customer_pesan_film']} -- {detail['Jumlah_tiket']} -- {detail['Kursi_dipesan']}")
 
