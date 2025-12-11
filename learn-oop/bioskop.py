@@ -12,11 +12,16 @@ class Studio:
     self.studio_film = {"1" : "Studio 1",
                        "2" : "Studio 2",
                        "3" : "Studio 3"}
+    
+    self.harga_film = {"1" : "RP 75.000",
+                      "2" : "RP 50.000",
+                      "3" : "RP 35.000"}
 
   def fungsi_penayangan_film(self):
     for nomor, (kode, judul) in enumerate(self.daftar_film.items(), start=1):
       studio = self.studio_film.get(kode)
-      print(f"{nomor}. {judul} -- {studio}")
+      harga = self.harga_film.get(kode)
+      print(f"{nomor}. {judul} -- {studio} -- {harga}")
 
   def melihat_kursi(self):
     for x, y in self.daftar_kursi.items():
@@ -50,22 +55,40 @@ class Customer:
           break
         else:
           print("Silahkan masukan Pilihan yang benar")
+  
+  def pembayaran_customer(self, film_dipesan_customer, jumlah_tiket):
+    if film_dipesan_customer == "1":
+      pembayaran_film = 75000 * jumlah_tiket
+      print(f"Total Pembayaran anda adalah RP {pembayaran_film}")
+    elif film_dipesan_customer == "2":
+      pembayaran_film = 50000 * jumlah_tiket
+      print(f"Total Pembayaran anda adalah RP {pembayaran_film}")
+    elif film_dipesan_customer == "3":
+      pembayaran_film = 35000 * jumlah_tiket
+      print(f"Total Pembayaran anda adalah RP {pembayaran_film}")
+    else:
+      print("Pembayaran Gagal")
 
   def customer_pesan(self):
     customer_pesan_film = input("\nMasukan film yang ingin dipesan : ")
+    quantity_tiket = int(input("Masukan Jumlah tiket yang ingin dipesan : "))
     studio.melihat_kursi()
 
     if customer_pesan_film == "1":
       self.customer_pesan_kursi()
+      self.pembayaran_customer(customer_pesan_film, quantity_tiket)
 
     elif customer_pesan_film == "2":
       self.customer_pesan_kursi()
+      self.pembayaran_customer(customer_pesan_film, quantity_tiket)
 
     elif customer_pesan_film == "3":
       self.customer_pesan_kursi()
+      self.pembayaran_customer(customer_pesan_film, quantity_tiket)
     else:
       print("Masukan pilihan yang benar")
 
+# application 
 studio = Studio()
 customer = Customer(studio)
 
