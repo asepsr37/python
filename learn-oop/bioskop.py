@@ -55,6 +55,9 @@ class Customer:
           break
         else:
           print("Silahkan masukan Pilihan yang benar")
+      
+      return customer_pesan_kursi
+  
   
   def pembayaran_customer(self, film_dipesan_customer, jumlah_tiket):
     if film_dipesan_customer == "1":
@@ -70,6 +73,9 @@ class Customer:
       print("Pembayaran Gagal")
 
   def customer_pesan(self):
+
+    list_pemesanan_film = []
+
     customer_pesan_film = input("\nMasukan film yang ingin dipesan : ")
     quantity_tiket = int(input("Masukan Jumlah tiket yang ingin dipesan : "))
     studio.melihat_kursi()
@@ -87,6 +93,12 @@ class Customer:
       self.pembayaran_customer(customer_pesan_film, quantity_tiket)
     else:
       print("Masukan pilihan yang benar")
+    
+    list_pemesanan_film.append({"customer_pesan_film" : customer_pesan_film,
+    "Jumlah_tiket" : quantity_tiket, "Kursi_dipesan" : self.customer_pesan_kursi()})
+
+    for detail in list_pemesanan_film:
+      print(f"{detail['customer_pesan_film']} -- {detail['Jumlah_tiket']} -- {detail['Kursi_dipesan']}")
 
 # application 
 studio = Studio()
